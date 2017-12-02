@@ -6,38 +6,34 @@ import (
 	"log"
 	"strings"
 	"strconv"
-	// "reflect"
 )
 
 func one(arr []string) int {
 	var i int
-	var x string
-	for v := 0; v <= len(arr); v++ {
-		if arr[0] == arr[1] {
-			temp_int, _ := strconv.Atoi(arr[0])
+	arr_length := len(arr)
+	arr = append(arr, arr[0])
+	for v := 0; v < arr_length; v++ {
+		if arr[v] == arr[v + 1] {
+			temp_int, _ := strconv.Atoi(arr[v])
 			i = i + temp_int
 		}
-		x, arr = arr[0], arr[1:]
-		arr = append(arr, x)
 	}
   return i
 }
 
 func two(arr []string) int {
-	var i int
-	var x string
-	mid := len(arr) / 2
-	for v := 0; v <= len(arr); v++ {
-		if arr[0] == arr[mid] {
-			temp_int, _ := strconv.Atoi(arr[0])
-			i = i + temp_int
+	i := 0
+	arr_len := len(arr)
+	mid := (arr_len / 2)
+	for v := 0; v <= mid; v++ {
+		mid_index := (v + mid) % arr_len
+		if arr[v] == arr[mid_index] {
+			temp_int, _ := strconv.Atoi(arr[v])
+			i = i + (temp_int * 2)
 		}
-		x, arr = arr[0], arr[1:]
-		arr = append(arr, x)
 	}
   return i
 }
-
 
 func main() {
   input, err := ioutil.ReadFile("01.txt")
@@ -48,7 +44,6 @@ func main() {
 	data := string(input)
 	arr := strings.Split(data, "")
 
-	
   one := one(arr)
 	fmt.Println(one)
 	two := two(arr)

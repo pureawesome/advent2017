@@ -16,12 +16,12 @@ def two(str)
   arr = str.split('')
   total = 0
   mid = arr.size / 2
-  arr.size.times do
-    total += arr[0].to_i if arr[0] == arr[mid]
+  mid.times  do
+    total += (arr[0].to_i * 2) if arr[0] == arr[mid]
     arr.rotate!
   end
   total
 end
 
-# p one(data)
+p one(data)
 p two(data)
