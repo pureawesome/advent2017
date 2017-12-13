@@ -29,10 +29,10 @@ func two(arr []string) int {
 		mid_index := (v + mid) % arr_len
 		if arr[v] == arr[mid_index] {
 			temp_int, _ := strconv.Atoi(arr[v])
-			i = i + (temp_int * 2)
+			i = i + temp_int
 		}
 	}
-  return i
+  return i * 2
 }
 
 func main() {
